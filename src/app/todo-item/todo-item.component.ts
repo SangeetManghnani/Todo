@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ListItemData } from 'src/modal/list-item-data';
 
 @Component({
   selector: 'app-todo-item',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoItemComponent implements OnInit {
 
+  todoItem:ListItemData = new ListItemData();
   constructor() { }
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.todoItem.isChecked = false;
+  }
 
 }

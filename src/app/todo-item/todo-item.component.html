@@ -1,3 +1,8 @@
-<p>
-  todo-item works!
-</p>
+<div class="todo-item-container">
+  <ion-checkbox [checked] = "todoItem.isChecked" [(ngModel)]="todoItem.isChecked" class="todo-item-checkbox"></ion-checkbox>
+  <div class="item-name-input" [ngClass]="{'item-checked':todoItem.isChecked}" >
+    <ion-item>
+      <ion-input type="text" placeholder = "List item" [(ngModel)]="todoItem.item_name"></ion-input>
+    </ion-item>
+  </div>
+</div>

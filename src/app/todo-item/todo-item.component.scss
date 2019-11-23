@@ -1,0 +1,14 @@
+.todo-item-container{
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    .todo-item-checkbox{
+        margin-right: 0.5rem;   
+    }
+    .item-name-input{
+        flex: 1;
+    }
+}
+.item-checked{
+    text-decoration: line-through;
+} 

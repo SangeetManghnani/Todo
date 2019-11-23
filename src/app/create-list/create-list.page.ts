@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListData } from 'src/modal/list-data';
+import { ListItemData } from 'src/modal/list-item-data';
 
 @Component({
   selector: 'app-create-list',
