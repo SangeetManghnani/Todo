@@ -12,6 +12,10 @@ ion-toolbar .toolbar-content {
 }
 
 ion-toolbar{
+    ion-datetime {
+        font-family: Raleway;
+        text-transform: uppercase;
+    }
     ion-title {
         padding: 0;
         margin-bottom: 0.5rem;
@@ -43,6 +47,22 @@ ion-content {
         }
         ion-card-header {
             padding-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            div{
+                height: 15px;
+                width: 15px;
+                text-align: right;
+            }
+            .high {
+                background: red;
+            }
+            .medium {
+                background: orange;
+            }
+            .low {
+                background: green;
+            }
         }
         ion-card-header, ion-content{ 
             font-family: Raleway;

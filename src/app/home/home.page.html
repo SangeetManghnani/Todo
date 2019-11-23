@@ -4,7 +4,7 @@
       To Do
     </ion-title>
     <ion-row justify-content-between align-items-center class="toolbar-content">
-      <p>You have {{taskCount}} remaining today</p>
+    <p>You have {{taskCount}} tasks remaining today</p>
       <ion-row justify-content-between align-items-center>
         <ion-datetime
           value="1995-04-15"
@@ -12,6 +12,8 @@
           displayFormat="DD MMM"
           monthShortNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"
           placeholder="select"
+          [(ngModel)] = "date"
+          (ionChange)="dateChanged($event)"
         ></ion-datetime>
         <ion-label>
           <ion-icon name="calendar"></ion-icon>
@@ -25,14 +27,19 @@
   <div class="ion-padding">
     <div class="tasks-content">
       <ion-list>
-        <ion-row *ngFor="let number of [0,1,2,3,4,5,6]"> 
+        <ion-row *ngFor="let task of tasks"> 
           <ion-col size="8">
             <ion-card>
               <ion-card-header>
-                <ion-card-subtitle>Household</ion-card-subtitle>
+                <ion-card-subtitle>
+                  {{task.category}}
+                </ion-card-subtitle>
+                <div [ngClass]="{'high': task.priority === 'high','medium': task.priority === 'medium', 'low': task.priority === 'low'}"></div>
               </ion-card-header>
               <ion-card-content class="ellipsis-text ">
-                Mopping, Dusting, Waste disposal
+                <span *ngFor="let item of task.items; let isLast= last">
+                  {{item.item_name}}{{isLast ? '': ','}}
+                </span>
               </ion-card-content>
             </ion-card>
           </ion-col>
@@ -40,7 +47,7 @@
             <ion-row justify-content-around align-items-center class="category-time">
               <ion-checkbox></ion-checkbox>
                 <ion-text color="primary">
-                  <p>12:00 AM</p>
+                  <p>{{task.time}}</p>
                 </ion-text>
             </ion-row>
           </ion-col>
@@ -53,4 +60,8 @@
         <ion-icon name="create"></ion-icon>
     </div>
   </div>
+
+  <button (click)="test()"> Test </button>
 </ion-content>
+
+
