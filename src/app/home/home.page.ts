@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   constructor() {}
-
+  taskCount : number = 4;
 }
