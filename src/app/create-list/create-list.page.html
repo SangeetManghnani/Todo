@@ -1,0 +1,23 @@
+<ion-content >
+  <div class="list-page">
+    <div class="list-page-header">
+      <div class="list-title">
+        <ion-icon name="list-box"></ion-icon> <span> Create list </span> 
+      </div>
+  
+      <div class="align-right">
+        <ion-icon name="close"></ion-icon>
+      </div>
+    </div>
+
+    <div class="list-category">
+      <div class="category-input">
+          <ion-input value="custom" placeholder = "Add category" [(ngModel)]="todoList.category" ></ion-input>
+      </div>
+
+      <div>
+        <ion-button fill = "clear" size = "small"> Save </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

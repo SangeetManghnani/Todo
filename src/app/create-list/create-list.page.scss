@@ -1,0 +1,33 @@
+.list-page{
+    padding: 12px;
+    .list-page-header{
+        color: var(--primary-text-color);
+        display: flex;
+        font-size: 1.5rem;
+        margin-top: 16px;
+        align-items: center;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #eee;
+        .list-title{
+            display: flex;
+            align-items: center;
+            ion-icon{
+                margin-right: 5px;
+            }
+        }
+}
+.list-category{
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 4px 1px 5px 2px #eee;
+    .category-input{
+        flex: 1;
+    }
+}
+
+    .align-right{
+        margin-left: auto;
+    }
+}
