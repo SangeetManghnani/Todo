@@ -8,6 +8,7 @@ import { CreateListPageRoutingModule } from './create-list-routing.module';
 
 import { CreateListPage } from './create-list.page';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
+import { TodoItemListComponent } from '../todo-item-list/todo-item-list.component';
 
 @NgModule({
   imports: [
@@ -18,8 +19,12 @@ import { TodoItemComponent } from '../todo-item/todo-item.component';
   ],
   declarations: [
     CreateListPage,
-    TodoItemComponent
+    TodoItemComponent,
+    TodoItemListComponent
   ],
-  exports: [TodoItemComponent]
+  exports: [
+    TodoItemComponent,
+    TodoItemListComponent
+  ]
 })
 export class CreateListPageModule {}

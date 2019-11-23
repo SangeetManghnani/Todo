@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { ListItemData } from 'src/modal/list-item-data';
 
 @Component({
@@ -8,10 +8,17 @@ import { ListItemData } from 'src/modal/list-item-data';
 })
 export class TodoItemComponent implements OnInit {
 
-  todoItem:ListItemData = new ListItemData();
+  @Input() todoItem:ListItemData
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes && changes["todoItem"] && changes["todoItem"].currentValue){
+      this.todoItem = changes["todoItem"].currentValue;
+    }
+  }
+
   ngOnInit() {
-    this.todoItem.isChecked = false;
+    
   }
 
 }

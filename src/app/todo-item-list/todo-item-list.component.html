@@ -1,0 +1,13 @@
+<div class="todo-item-list-component"> 
+    <div *ngFor="let todoItem of allTodoItems" >
+        <app-todo-item [todoItem] = "todoItem"></app-todo-item>
+      </div>
+      
+  <ion-item >
+    <ion-input type = "text" placeholder = "&#x2b; List Item" (input) = "createItem($event)"></ion-input>
+  </ion-item>
+
+  
+</div>
+
+
