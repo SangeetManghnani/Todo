@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { ListItemData } from 'src/modal/list-item-data';
+import { TodoItemComponent } from '../todo-item/todo-item.component';
+import { IonInput } from '@ionic/angular';
 
 @Component({
   selector: 'app-todo-item-list',
@@ -9,6 +11,8 @@ import { ListItemData } from 'src/modal/list-item-data';
 export class TodoItemListComponent implements OnInit {
 
   allTodoItems: ListItemData[] = [];
+  @ViewChildren('todoItemComp') todoItemList:QueryList<TodoItemComponent>;
+  @ViewChild('listGenerator', {static:false}) listGenerator:IonInput;
   constructor() { }
 
   ngOnInit() {}
@@ -20,6 +24,10 @@ export class TodoItemListComponent implements OnInit {
       itemData.item_name = val;
       itemData.isChecked = false;
       this.allTodoItems.push(itemData);
+      this.listGenerator.value = "";
+      setTimeout(() => {
+        this.todoItemList.last.haveFocusOnInput();
+      }, 10)
     }
   }
 }

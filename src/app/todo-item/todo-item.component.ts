@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { ListItemData } from 'src/modal/list-item-data';
+import { IonInput } from '@ionic/angular';
 
 @Component({
   selector: 'app-todo-item',
@@ -8,7 +9,8 @@ import { ListItemData } from 'src/modal/list-item-data';
 })
 export class TodoItemComponent implements OnInit {
 
-  @Input() todoItem:ListItemData
+  @Input() todoItem:ListItemData;
+  @ViewChild('todoInput', {static:false}) todoInput:IonInput
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -19,6 +21,10 @@ export class TodoItemComponent implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  haveFocusOnInput(){
+    this.todoInput.setFocus();
   }
 
 }
