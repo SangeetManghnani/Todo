@@ -9,10 +9,14 @@ import { ListItemData } from 'src/modal/list-item-data';
 })
 export class CreateListPage implements OnInit {
   todoList:ListData = new ListData();
-  
+  enableTodoList:boolean = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  switchTodoListTask(){
+    this.enableTodoList = !this.enableTodoList;
   }
 
 }

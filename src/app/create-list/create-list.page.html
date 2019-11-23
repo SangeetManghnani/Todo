@@ -20,9 +20,23 @@
       </div>
     </div>
 
+  <div class="items-add-container">
+      <div class="add-items">
+          <div>
+            Add Items
+          </div>
+          <div class="align-right">
+            <ion-button fill = "clear" size = "small" (click)="switchTodoListTask()" > <ion-icon [name]="enableTodoList ?'remove':'add'"></ion-icon> </ion-button>
+          </div>
+        </div>
     
-      <app-todo-item></app-todo-item>
+        <div *ngIf="enableTodoList">
+            <app-todo-item-list></app-todo-item-list>
+        </div>
+  </div>  
+    
+    <!-- <app-todo-item-list></app-todo-item-list> -->
 
-      <app-todo-item-list></app-todo-item-list>
+      
   </div>
 </ion-content>

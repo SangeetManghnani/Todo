@@ -27,7 +27,7 @@ export class TodoItemListComponent implements OnInit {
       this.listGenerator.value = "";
       setTimeout(() => {
         this.todoItemList.last.haveFocusOnInput();
-      }, 10)
+      }, 10);
     }
   }
 }
