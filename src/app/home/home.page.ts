@@ -18,79 +18,22 @@ export class HomePage {
   date:string = "";
   tasksToDisplay: ListData[] = [];
   ngOnInit() {
+    this.date = this.utilService.getFormattedDate(new Date());
   }
   
   ionViewWillEnter(){
    this.tasksToDisplay = [];
-   let today : string = this.getFormattedDate(new Date());
+   let today : string = this.utilService.getFormattedDate(new Date());
    this.tasksToDisplay = this.utilService.getTasksOnDate(today);
   }
 
   navigateToCreateList(){
     this.router.navigate(['create-list']);
   }
-
-  getFormattedDate(date) {
-    date = new Date(date);
-    let dd: string = String(date.getDate()).padStart(2, '0');
-    let mm: string = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
-    let yyyy: Number = date.getFullYear();
-    let formattedDate: string = `${yyyy}/${mm}/${dd}`;
-
-    return formattedDate;
-  }
-  
-  
-  // setItem() {
-  //   var dateSet = this.getFormattedDate(new Date('2019/11/28'));
-  //   var data2 = [{
-  //     category: 'Leasure', 
-  //     priority: 'high',
-  //     date: dateSet,
-  //     time: '07:00 am',
-  //     items: [{
-  //       isChecked: false,
-  //       item_name: 'Go out'
-  //     },
-  //     {
-  //       isChecked: false,
-  //       item_name: 'Maje Karo'
-  //     }]
-  //   },{
-  //     category: 'Exercises', 
-  //     priority: 'medium',
-  //     date: dateSet,
-  //     time: '09:00 am',
-  //     items: [{
-  //       isChecked: false,
-  //       item_name: 'Cardio run'
-  //     },
-  //     {
-  //       isChecked: false,
-  //       item_name: 'Cycling cardio'
-  //     }]
-  //   },{
-  //     category: 'Chores Daily', 
-  //     priority: 'high',
-  //     date: dateSet,
-  //     time: '5:00 pm',
-  //     items: [{
-  //       isChecked: false,
-  //       item_name: 'Dump waste'
-  //     },
-  //     {
-  //       isChecked: false,
-  //       item_name: 'Mopping'
-  //     }]
-  //   }];
-    
-  //   this.tasks = [];
-  //   window.localStorage.setItem(dateSet, JSON.stringify(data2));
-  // }
   dateChanged(ev) {
-    const dateSelected = this.getFormattedDate(ev.detail.value);
+    this.tasksToDisplay = [];
+    const dateSelected = this.utilService.getFormattedDate(ev.detail.value);
     console.log(dateSelected);
-    this.utilService.getTasksOnDate(dateSelected);
+    this.tasksToDisplay = this.utilService.getTasksOnDate(dateSelected);
   }
-  
 }

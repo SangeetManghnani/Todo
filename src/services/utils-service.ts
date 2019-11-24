@@ -24,7 +24,7 @@ export class UtilService {
         let dd: string = String(date.getDate()).padStart(2, '0');
         let mm: string = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
         let yyyy: Number = date.getFullYear();
-        let formattedDate: string = `${yyyy}/${mm}/${dd}`;
+        let formattedDate: string = `${yyyy}-${mm}-${dd}`;
         
         return formattedDate;
      }
