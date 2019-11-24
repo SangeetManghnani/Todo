@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,10 @@ export class HomePage {
     let today : string = this.getFormattedDate(new Date());
     this.tasks = JSON.parse(window.localStorage.getItem(today));
     // this.taskCount = this.tasks.length();
+  }
+
+  navigateToCreateList(){
+    this.router.navigate(['create-list']);
   }
 
   getFormattedDate(date) {

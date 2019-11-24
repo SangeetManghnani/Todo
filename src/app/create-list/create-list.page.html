@@ -1,0 +1,78 @@
+<ion-content >
+  <div class="list-page">
+    <div class="list-page-header">
+      <div class="list-title">
+        <ion-icon name="list-box"></ion-icon> <span> Create list </span> 
+      </div>
+  
+      <div class="align-right">
+        <ion-icon name="close"></ion-icon>
+      </div>
+    </div>
+
+    <div class="list-category">
+      <div class="category-input">
+          <ion-input value="custom" placeholder = "Add category" [(ngModel)]="todoList.category" ></ion-input>
+      </div>
+
+      <div>
+        <ion-button fill = "clear" size = "small"> Save </ion-button>
+      </div>
+    </div>
+
+  <div class="items-add-container">
+      <div class="add-items">
+          <div>
+            Add Items
+          </div>
+          <div class="align-right">
+            <ion-button fill = "clear" size = "small" (click)="switchTodoListTask()" > <ion-icon [name]="enableTodoList ?'remove':'add'"></ion-icon> </ion-button>
+          </div>
+        </div>
+    
+        <div [hidden] = "!enableTodoList">
+            <app-todo-item-list #todoListItem ></app-todo-item-list>
+        </div>
+  </div>
+  
+  <div class="priority-container">
+    <div>
+      Priority
+    </div>
+    <div class="align-right" style="display: flex;">
+      <div class="priority-select" (click)="selectPriority('low')" style="background: green;" [style.box-shadow] = "todoList.priority == 'low'?'1px 1px 2px 2px green':''" ></div>
+      <div class="priority-select" (click)="selectPriority('medium')" style="background: orange;" [style.box-shadow] = "todoList.priority == 'medium'?'1px 1px 2px 2px orange':''" ></div>
+      <div class="priority-select" (click)="selectPriority('high')" style="background: red;" [style.border] = "todoList.priority == 'high'?'1px 1px 2px 2px red':''"></div>
+    </div>
+  </div>
+
+  <div class="choose-date-container">
+    <div>
+      Choose Date
+    </div>
+
+    <div class="date-selector">
+      <ion-datetime displayFormat="DD MMM"
+      monthShortNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" placeholder="Select Date" [(ngModel)]="todoList.date"></ion-datetime>
+    </div>
+  </div>
+
+
+  <div class="choose-time-conatainer">
+    <div>
+      Choose Time
+    </div>
+
+    <div class="time-selector">
+        <ion-datetime displayFormat="h:mm a" placeholder = "Select time" [(ngModel)]="todoList.time"></ion-datetime> 
+    </div>
+  </div>
+    
+  
+  <div>
+    <ion-button (click)="saveList()"> Save List </ion-button>
+  </div>
+
+      
+  </div>
+</ion-content>
