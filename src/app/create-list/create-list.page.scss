@@ -36,6 +36,32 @@
     }
 }
 
+.priority-container{
+    display: flex;
+    .priority-select{
+        height: 10px;
+        width: 10px;
+    }
+}
+
+.choose-date-container{
+    display: flex;
+    align-items: center;
+    text-align: right;
+    .date-selector{
+        flex: 1;
+    }
+}
+
+.choose-time-conatainer{
+    display: flex;
+    align-items: center;
+    text-align: right;
+    .time-selector{
+        flex: 1;
+    }
+}
+
     .align-right{
         margin-left: auto;
     }

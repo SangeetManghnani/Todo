@@ -9,16 +9,22 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TodoItemComponent } from './todo-item/todo-item.component';
+import { UtilService } from 'src/services/utils-service';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+     IonicModule.forRoot(),
+      AppRoutingModule,
+    ],
   providers: [
     StatusBar,
     SplashScreen,
+    UtilService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   exports: [],
