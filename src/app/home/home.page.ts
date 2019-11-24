@@ -10,16 +10,14 @@ export class HomePage {
   constructor() {}
   taskCount : number = 0;
   date:string = "";
-  tasks: Array<Object> = [];
+  tasks: Array<Object>;
   ngOnInit() {
     // fetch data from local storage
     this.date = (new Date()).toString();
     this.setItem();
     let today : string = this.getFormattedDate(new Date());
-    this.tasks = window.localStorage.getItem(today);
-    console.log(this.tasks);
-    this.tasks = JSON.parse(this.tasks);
-    this.taskCount = this.tasks.length();
+    this.tasks = JSON.parse(window.localStorage.getItem(today));
+    // this.taskCount = this.tasks.length();
   }
 
   getFormattedDate(date) {
@@ -33,7 +31,11 @@ export class HomePage {
   }
   
   getTasks(date) {
-    this.tasks = window.localStorage.getItem(date);
+    this.tasks = [];
+    let tasks = JSON.parse(window.localStorage.getItem(date));
+    tasks.map((task) => {
+      this.tasks.push(task);
+    })
   }
   setItem() {
     var dateSet = this.getFormattedDate(new Date('2019/11/28'));
@@ -117,6 +119,7 @@ export class HomePage {
     //     item_name: 'Mopping'
     //   }]
     // }];
+    this.tasks = [];
     window.localStorage.setItem(dateSet, JSON.stringify(data2));
   }
   dateChanged(ev) {
