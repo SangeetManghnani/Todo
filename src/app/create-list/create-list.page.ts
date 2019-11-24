@@ -3,6 +3,7 @@ import { ListData } from 'src/modal/list-data';
 import { ListItemData } from 'src/modal/list-item-data';
 import { TodoItemListComponent } from '../todo-item-list/todo-item-list.component';
 import { UtilService } from 'src/services/utils-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-list',
@@ -16,7 +17,8 @@ export class CreateListPage implements OnInit {
   enableTodoList:boolean = false;
 
   constructor(
-    public utilService:UtilService
+    public utilService:UtilService,
+    public router:Router
   ) { }
 
   ngOnInit() {
@@ -43,9 +45,13 @@ export class CreateListPage implements OnInit {
     }
     this.todoList.date = this.utilService.getFormattedDate(this.todoList.date);
     this.todoList.time = this.utilService.getFormattedTime(this.todoList.time);
+    this.utilService.removeEmptyListItem(this.todoList);
     this.utilService.storeCreateList(this.todoList);
+    this.router.navigate(['home']);
     console.log(this.todoList);
   
   }
+
+
 
 }

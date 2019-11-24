@@ -47,4 +47,12 @@ export class UtilService {
             localStorage.setItem(listData.date, JSON.stringify([listData]));
         }
     }
+
+    removeEmptyListItem(listData:ListData){
+        if(listData && listData.items && listData.items.length > 0){
+            listData.items = listData.items.filter(item => {
+                return item.item_name;
+            });
+        }
+    }
 }
