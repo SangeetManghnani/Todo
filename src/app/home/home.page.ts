@@ -8,19 +8,22 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   constructor() {}
-  taskCount : number = 4;
+  taskCount : number = 0;
   date:string = "";
   tasks: Array<Object> = [];
   ngOnInit() {
     // fetch data from local storage
+    this.date = (new Date()).toString();
     this.setItem();
     let today : string = this.getFormattedDate(new Date());
     this.tasks = window.localStorage.getItem(today);
     console.log(this.tasks);
     this.tasks = JSON.parse(this.tasks);
+    this.taskCount = this.tasks.length();
   }
 
   getFormattedDate(date) {
+    date = new Date(date);
     let dd: string = String(date.getDate()).padStart(2, '0');
     let mm: string = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy: Number = date.getFullYear();
@@ -30,22 +33,22 @@ export class HomePage {
   }
   
   getTasks(date) {
-    console.log(date);
+    this.tasks = window.localStorage.getItem(date);
   }
   setItem() {
-    var dateSet = this.getFormattedDate(new Date());
-    var data = [{
-      category: 'Shopping', 
+    var dateSet = this.getFormattedDate(new Date('2019/11/28'));
+    var data2 = [{
+      category: 'Leasure', 
       priority: 'high',
       date: dateSet,
       time: '07:00 am',
       items: [{
         isChecked: false,
-        item_name: 'Buy Clothes'
+        item_name: 'Go out'
       },
       {
         isChecked: false,
-        item_name: 'Lauki kharido'
+        item_name: 'Maje Karo'
       }]
     },{
       category: 'Exercises', 
@@ -74,11 +77,52 @@ export class HomePage {
         item_name: 'Mopping'
       }]
     }];
-    window.localStorage.setItem(dateSet, JSON.stringify(data));
+    // var data = [{
+    //   category: 'Shopping', 
+    //   priority: 'high',
+    //   date: dateSet,
+    //   time: '07:00 am',
+    //   items: [{
+    //     isChecked: false,
+    //     item_name: 'Buy Clothes'
+    //   },
+    //   {
+    //     isChecked: false,
+    //     item_name: 'Lauki kharido'
+    //   }]
+    // },{
+    //   category: 'Exercises', 
+    //   priority: 'medium',
+    //   date: dateSet,
+    //   time: '09:00 am',
+    //   items: [{
+    //     isChecked: false,
+    //     item_name: 'Cardio run'
+    //   },
+    //   {
+    //     isChecked: false,
+    //     item_name: 'Cycling cardio'
+    //   }]
+    // },{
+    //   category: 'Chores Daily', 
+    //   priority: 'high',
+    //   date: dateSet,
+    //   time: '5:00 pm',
+    //   items: [{
+    //     isChecked: false,
+    //     item_name: 'Dump waste'
+    //   },
+    //   {
+    //     isChecked: false,
+    //     item_name: 'Mopping'
+    //   }]
+    // }];
+    window.localStorage.setItem(dateSet, JSON.stringify(data2));
   }
   dateChanged(ev) {
-    console.log(ev.detail.value);
-    console.log(this.date);
+    const dateSelected = this.getFormattedDate(ev.detail.value);
+    console.log(dateSelected);
+    this.getTasks(dateSelected);
   }
   
 }
