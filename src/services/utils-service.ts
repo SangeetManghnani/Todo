@@ -20,12 +20,22 @@ export class UtilService {
     }
 
     getFormattedDate(date) {
+        date = new Date(date);
         let dd: string = String(date.getDate()).padStart(2, '0');
         let mm: string = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
         let yyyy: Number = date.getFullYear();
         let formattedDate: string = `${yyyy}/${mm}/${dd}`;
         
         return formattedDate;
+     }
+
+     getFormattedTime(date:string){
+        let newDate = new Date(date);
+        let hours = newDate.getHours();
+        let minutes = newDate.getMinutes();
+        let seconds = newDate.getSeconds();
+        let formattedTime:string = `${hours}:${minutes}:${seconds}`;
+        return formattedTime;
      }
 
     storeCreateList(listData:ListData){

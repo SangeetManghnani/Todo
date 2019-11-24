@@ -42,6 +42,7 @@ export class CreateListPage implements OnInit {
       return;
     }
     this.todoList.date = this.utilService.getFormattedDate(this.todoList.date);
+    this.todoList.time = this.utilService.getFormattedTime(this.todoList.time);
     this.utilService.storeCreateList(this.todoList);
     console.log(this.todoList);
   
