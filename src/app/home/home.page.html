@@ -29,7 +29,7 @@
       <ion-list>
         <ion-row *ngFor="let task of tasksToDisplay"> 
           <ion-col size="8">
-            <ion-card>
+            <ion-card (click)="navigateToEditTaskPage(task)">
               <ion-card-header>
                 <ion-card-subtitle>
                   {{task.category}}

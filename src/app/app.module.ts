@@ -1,3 +1,4 @@
+import { ValidationService } from './../services/validation-service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -25,6 +26,7 @@ import { UtilService } from 'src/services/utils-service';
     StatusBar,
     SplashScreen,
     UtilService,
+    ValidationService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   exports: [],

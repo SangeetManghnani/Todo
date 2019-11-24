@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="list-category">
+    <div class="list-category" *ngIf="todoList" >
       <div class="category-input">
           <ion-input value="custom" placeholder = "Add category" [(ngModel)]="todoList.category" ></ion-input>
       </div>

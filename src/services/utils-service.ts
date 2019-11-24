@@ -59,4 +59,5 @@ export class UtilService {
     getTasksOnDate(date:string):ListData[]{
         return  JSON.parse(localStorage.getItem(date)); 
     }
+
 }

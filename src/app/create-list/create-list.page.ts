@@ -4,6 +4,8 @@ import { ListItemData } from 'src/modal/list-item-data';
 import { TodoItemListComponent } from '../todo-item-list/todo-item-list.component';
 import { UtilService } from 'src/services/utils-service';
 import { Router } from '@angular/router';
+import { Constants } from 'src/Constants';
+import { ValidationService } from 'src/services/validation-service';
 
 @Component({
   selector: 'app-create-list',
@@ -15,14 +17,25 @@ export class CreateListPage implements OnInit {
   @ViewChild('todoListItem' ,{static:false}) todoListItem:TodoItemListComponent
   todoList:ListData = new ListData();
   enableTodoList:boolean = false;
-
+  mode:string = "";
   constructor(
     public utilService:UtilService,
+    public validationService:ValidationService,
     public router:Router
   ) { }
 
   ngOnInit() {
+    let currentNavigation = this.router.getCurrentNavigation();
+    if(currentNavigation && currentNavigation.extras && currentNavigation.extras.state){
+      this.mode = currentNavigation.extras.state.mode;
+      this.todoList = currentNavigation.extras.state.task;
+    }
   }
+
+  ngAfterViewInit() {
+    this.assignTodoItemsInEdit();
+  }
+
 
   switchTodoListTask(){
     this.enableTodoList = !this.enableTodoList;
@@ -46,12 +59,22 @@ export class CreateListPage implements OnInit {
     this.todoList.date = this.utilService.getFormattedDate(this.todoList.date);
     this.todoList.time = this.utilService.getFormattedTime(this.todoList.time);
     this.utilService.removeEmptyListItem(this.todoList);
+    let isTaskAlreadyExistOnDate:boolean = this.validationService.checkIfSameTodoExist(this.todoList);
+    if(isTaskAlreadyExistOnDate){
+      this.utilService.presentToast("Task already exist with same category");
+      return;
+    }
     this.utilService.storeCreateList(this.todoList);
     this.router.navigate(['home']);
-    console.log(this.todoList);
-  
   }
 
+  assignTodoItemsInEdit(){
+    if(this.todoList && this.todoList.items && this.todoList.items.length > 0 && this.todoListItem){
+      this.todoListItem.allTodoItems = this.todoList.items;
+    }
+  }
+
+  
 
 
 }

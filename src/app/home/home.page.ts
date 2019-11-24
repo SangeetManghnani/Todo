@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { ListData } from 'src/modal/list-data';
 import { UtilService } from 'src/services/utils-service';
+import { Constants } from 'src/Constants';
 
 @Component({
   selector: 'app-home',
@@ -35,5 +36,15 @@ export class HomePage {
     const dateSelected = this.utilService.getFormattedDate(ev.detail.value);
     console.log(dateSelected);
     this.tasksToDisplay = this.utilService.getTasksOnDate(dateSelected);
+  }
+
+  navigateToEditTaskPage(task:ListData){
+    let navigationExtras:NavigationExtras = {
+      state: {
+        task,
+        mode:Constants.MODE_EDIT
+      }
+    }
+    this.router.navigate(['create-list'], navigationExtras);
   }
 }
