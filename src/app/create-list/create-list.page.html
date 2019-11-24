@@ -52,7 +52,8 @@
     </div>
 
     <div class="date-selector">
-      <ion-datetime displayFormat="MM DD YY" placeholder="Select Date" [(ngModel)]="todoList.date"></ion-datetime>
+      <ion-datetime displayFormat="DD MMM"
+      monthShortNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" placeholder="Select Date" [(ngModel)]="todoList.date"></ion-datetime>
     </div>
   </div>
 

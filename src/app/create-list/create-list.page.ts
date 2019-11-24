@@ -32,7 +32,7 @@ export class CreateListPage implements OnInit {
 
   saveList(){
     if(this.todoListItem && this.todoListItem.allTodoItems && this.todoListItem.allTodoItems.length > 0){
-      this.todoList.items = this.todoListItem.allTodoItems
+      this.todoList.items = this.todoListItem.allTodoItems;
     }
     if(!this.todoList.priority){
       this.todoList.priority = "low";
@@ -41,7 +41,8 @@ export class CreateListPage implements OnInit {
       this.utilService.presentToast("Please provide date to continue");
       return;
     }
-
+    this.todoList.date = this.utilService.getFormattedDate(this.todoList.date);
+    this.utilService.storeCreateList(this.todoList);
     console.log(this.todoList);
   
   }
