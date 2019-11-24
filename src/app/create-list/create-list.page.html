@@ -4,74 +4,80 @@
       <div class="list-title">
         <ion-icon name="list-box"></ion-icon> <span> Create list </span> 
       </div>
-  
+      
       <div class="align-right">
         <ion-icon name="close"></ion-icon>
       </div>
     </div>
 
-    <div class="list-category">
-      <div class="category-input">
-          <ion-input value="custom" placeholder = "Add category" [(ngModel)]="todoList.category" ></ion-input>
-      </div>
-
-      <div>
-        <ion-button fill = "clear" size = "small"> Save </ion-button>
-      </div>
-    </div>
-
-  <div class="items-add-container">
-      <div class="add-items">
-          <div>
-            Add Items
-          </div>
-          <div class="align-right">
-            <ion-button fill = "clear" size = "small" (click)="switchTodoListTask()" > <ion-icon [name]="enableTodoList ?'remove':'add'"></ion-icon> </ion-button>
-          </div>
+    <div class="list-scroll-content">
+      <div class="list-category">
+        <div class="category-input">
+            <ion-input value="custom" placeholder = "Add category" [(ngModel)]="todoList.category" ></ion-input>
         </div>
-    
-        <div [hidden] = "!enableTodoList">
-            <app-todo-item-list #todoListItem ></app-todo-item-list>
+  
+        <div>
+          <ion-button fill = "clear" size = "small"> Save </ion-button>
         </div>
-  </div>
+      </div>
   
-  <div class="priority-container">
-    <div>
-      Priority
+    <div class="items-add-container create-item-block">
+        <div class="add-items">
+            <h4>
+              Add Items
+            </h4>
+            <div class="align-right">
+              <ion-button fill = "clear" size = "small" (click)="switchTodoListTask()" > <ion-icon [name]="enableTodoList ?'remove':'add'"></ion-icon> </ion-button>
+            </div>
+          </div>
+      
+          <div [hidden] = "!enableTodoList" class="todo-items-list">
+              <app-todo-item-list #todoListItem ></app-todo-item-list>
+          </div>
     </div>
-    <div class="align-right" style="display: flex;">
-      <div class="priority-select" (click)="selectPriority('low')" style="background: green;" [style.box-shadow] = "todoList.priority == 'low'?'1px 1px 2px 2px green':''" ></div>
-      <div class="priority-select" (click)="selectPriority('medium')" style="background: orange;" [style.box-shadow] = "todoList.priority == 'medium'?'1px 1px 2px 2px orange':''" ></div>
-      <div class="priority-select" (click)="selectPriority('high')" style="background: red;" [style.border] = "todoList.priority == 'high'?'1px 1px 2px 2px red':''"></div>
-    </div>
-  </div>
-
-  <div class="choose-date-container">
-    <div>
-      Choose Date
-    </div>
-
-    <div class="date-selector">
-      <ion-datetime displayFormat="DD MMM"
-      monthShortNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" placeholder="Select Date" [(ngModel)]="todoList.date"></ion-datetime>
-    </div>
-  </div>
-
-
-  <div class="choose-time-conatainer">
-    <div>
-      Choose Time
-    </div>
-
-    <div class="time-selector">
-        <ion-datetime displayFormat="h:mm a" placeholder = "Select time" [(ngModel)]="todoList.time"></ion-datetime> 
-    </div>
-  </div>
     
+    <ion-row class="priority-container create-item-block">
+      <ion-col size="8">
+        <h4>
+          Priority
+        </h4>
+      </ion-col>
+      <ion-col class="align-right" size="4">
+        <ion-row justify-content-around align-items-center>
+          <div class="priority-select" (click)="selectPriority('low')" style="background: green;" [style.box-shadow] = "todoList.priority == 'low'?'1px 1px 2px 2px green':''" ></div>
+          <div class="priority-select" (click)="selectPriority('medium')" style="background: orange;" [style.box-shadow] = "todoList.priority == 'medium'?'1px 1px 2px 2px orange':''" ></div>
+          <div class="priority-select" (click)="selectPriority('high')" style="background: red;" [style.border] = "todoList.priority == 'high'?'1px 1px 2px 2px red':''"></div>
+        </ion-row>
+      </ion-col>
+    </ion-row>
   
-  <div>
+    <div class="choose-date-container create-item-block">
+      <h4>
+        Choose Date
+      </h4>
+  
+      <div class="date-selector">
+        <ion-datetime displayFormat="DD MMM"
+        monthShortNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" placeholder="Select Date" [(ngModel)]="todoList.date"></ion-datetime>
+      </div>
+    </div>
+  
+  
+    <div class="choose-time-conatainer create-item-block">
+      <h4>
+        Choose Time
+      </h4>
+  
+      <div class="time-selector">
+          <ion-datetime displayFormat="h:mm a" placeholder = "Select time" [(ngModel)]="todoList.time"></ion-datetime> 
+      </div>
+    </div>
+
+    </div>
+
+  <ion-row class="save-btn-container" justify-content-around>
     <ion-button (click)="saveList()"> Save List </ion-button>
-  </div>
+  </ion-row>
 
       
   </div>

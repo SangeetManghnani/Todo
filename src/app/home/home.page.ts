@@ -18,6 +18,7 @@ export class HomePage {
     this.setItem();
     let today : string = this.getFormattedDate(new Date());
     this.tasks = JSON.parse(window.localStorage.getItem(today));
+    this.taskCount = this.tasks.length;
     // this.taskCount = this.tasks.length();
   }
 
@@ -34,10 +35,14 @@ export class HomePage {
 
     return formattedDate;
   }
-  
+
+  // TODO:  replace with utils getTasks
   getTasks(date) {
     this.tasks = [];
     let tasks = JSON.parse(window.localStorage.getItem(date));
+    if(tasks === null){
+      return [];
+    }
     tasks.map((task) => {
       this.tasks.push(task);
     })
@@ -131,6 +136,7 @@ export class HomePage {
     const dateSelected = this.getFormattedDate(ev.detail.value);
     console.log(dateSelected);
     this.getTasks(dateSelected);
+    this.taskCount = this.tasks.length;
   }
   
 }

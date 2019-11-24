@@ -4,5 +4,6 @@ export class ListData {
     priority:string;
     date:string;
     time:string;
+    isChecked: boolean;
     items: ListItemData[];
 }

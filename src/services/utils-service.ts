@@ -47,4 +47,13 @@ export class UtilService {
             localStorage.setItem(listData.date, JSON.stringify([listData]));
         }
     }
+    getTasksCount(tasks) {
+        let tasksCount = 0; 
+        tasks.map((task) => {
+            if(!task.isChecked) {
+                tasksCount++;
+            }
+        });
+        return tasksCount;
+    }
 }
