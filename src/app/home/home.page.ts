@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(public router: Router) {}
   taskCount : number = 0;
   date:string = "";
   tasks: Array<Object>;
