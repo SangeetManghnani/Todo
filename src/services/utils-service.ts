@@ -60,4 +60,14 @@ export class UtilService {
         return  JSON.parse(localStorage.getItem(date)); 
     }
 
+    removeTaskOnEdit(listData:ListData){
+        let listArr:ListData[] = this.getTasksOnDate(listData.date);
+        listArr = listArr.filter(task => {
+             if(task.category != listData.category){
+                 return task;
+             }
+        });
+        localStorage.setItem(listData.date, JSON.stringify(listArr));
+    }
+
 }

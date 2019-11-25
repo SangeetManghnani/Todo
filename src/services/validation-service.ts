@@ -11,11 +11,15 @@ export class ValidationService {
     checkIfSameTodoExist(listData:ListData){
         let isTaskAlreadyPresent:boolean = false;
         let taskList:ListData[] = this.utilService.getTasksOnDate(listData.date);
-        for (const task of taskList) {
-            if(task.category == listData.category){
-                return true;
+        if(taskList && taskList.length){
+            for (const task of taskList) {
+                if(task.category == listData.category){
+                    return true;
+                }
             }
         }
         return isTaskAlreadyPresent;
     }
+
+    
 }
